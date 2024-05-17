@@ -89,23 +89,26 @@ def fazer_login(usuarios):
     print()  
 
 def recuperar_senha(usuarios):
-    usuario = input("Digite seu nome de usuário: ").strip()
-    if usuario not in usuarios:
+    while True:
+     usuario = input("Digite seu nome de usuário ou digite 1 para voltar: ").strip()
+     if usuario.lower() == "1":
+        break
+     if usuario not in usuarios:
         print("Nome de usuário não encontrado.")
         return
 
-    resposta_seguranca = input("Digite a resposta à dica de segurança: ").strip()
+     resposta_seguranca = input("Digite a resposta à dica de segurança: ").strip()
 
-    dados = usuarios[usuario]
-    if dados['dica_seguranca'] == resposta_seguranca:
+     dados = usuarios[usuario]
+     if dados['resposta_seguranca'] == resposta_seguranca:
         senha_original = getpass("Digite sua nova senha: ", show_asterisks=False)
         senha_hash = hash_senha(senha_original)
         dados['senha_hash'] = senha_hash
         salvar_usuario(usuario, senha_hash, dados['dica_seguranca'], dados['resposta_seguranca'])
         print("Senha redefinida com sucesso!")
-    else:
-        print("Dica de segurança ou resposta incorretos. Por favor, tente novamente.")
-    print() 
+     else:
+        print("Resposta incorreta. Por favor, tente novamente.")
+     print() 
 
 def carregar_usuarios():
     usuarios = {}
@@ -117,7 +120,7 @@ def carregar_usuarios():
                     usuario, senha_hash, dica_seguranca, resposta_seguranca = parts
                     usuarios[usuario] = {'senha_hash': senha_hash.encode(), 'dica_seguranca': dica_seguranca, 'resposta_seguranca': resposta_seguranca}
                 else:
-                    print("A linha no arquivo 'usuarios.txt' não possui o formato esperado:", line)
+                    print()
     except FileNotFoundError:
         pass
     return usuarios
@@ -156,52 +159,64 @@ def menu_denuncia():
 
 def exibir_numeros_emergencia():
     print("\nNúmeros de Emergência no Brasil:")
-    print("190 - Polícia Militar: Emergências policiais, assaltos, roubos, agressões, ameaças[1][2][4]")
-    print("192 - SAMU: Atendimento médico de urgência, problemas cardiorrespiratórios, intoxicações, afogamentos[1][2][4]")
-    print("193 - Corpo de Bombeiros: Incêndios, acidentes, salvamentos, atendimento pré-hospitalar[1][3][4]")
-    print("197 - Polícia Civil: Denúncias e informações para investigações[2][4]")
-    print("198 - Polícia Rodoviária: Emergências em rodovias federais[4][5]")
-    print("199 - Defesa Civil: Desastres naturais, alagamentos, deslizamentos[1][3]")
-    print("180 - Central de Atendimento à Mulher: Violência contra a mulher[3][5]")
-    print("181 - Disque Denúncia: Denúncias anônimas de crimes[4][5]")
-    print("100 - Disque Direitos Humanos: Denúncias de violações de direitos humanos[3]")
-    print("188 - CVV (Centro de Valorização da Vida): Prevenção ao suicídio[3]")
+    print("190 - Polícia Militar: Emergências policiais, assaltos, roubos, agressões, ameaças.")
+    print("192 - SAMU: Atendimento médico de urgência, problemas cardiorrespiratórios, intoxicações, afogamentos.")
+    print("193 - Corpo de Bombeiros: Incêndios, acidentes, salvamentos, atendimento pré-hospitalar.")
+    print("197 - Polícia Civil: Denúncias e informações para investigações.")
+    print("198 - Polícia Rodoviária: Emergências em rodovias federais.")
+    print("199 - Defesa Civil: Desastres naturais, alagamentos, deslizamentos.")
+    print("180 - Central de Atendimento à Mulher: Violência contra a mulher.")
+    print("181 - Disque Denúncia: Denúncias anônimas de crimes.")
+    print("100 - Disque Direitos Humanos: Denúncias de violações de direitos humanos.")
+    print("188 - CVV (Centro de Valorização da Vida): Prevenção ao suicídio.")
     print() 
 
 def contatar_numero_emergencia():
-    numero = input("Digite o número de emergência que deseja contatar (ex: 192): ")
-    if numero == "190":
+    while True:
+     numero = input("Digite o número de emergência que deseja contatar (ex: 192) ou 'sair' para voltar: ")
+     if numero.lower() == "sair":
+        break
+     if numero == "190":
         print("Você será redirecionado para a Polícia Militar.")
         webbrowser.open("tel:190")
-    elif numero == "192":
+        break
+     elif numero == "192":
         print("Você será redirecionado para o SAMU.")
         webbrowser.open("tel:192")
-    elif numero == "193":
+        break
+     elif numero == "193":
         print("Você será redirecionado para o Corpo de Bombeiros.")
         webbrowser.open("tel:193")
-    elif numero == "197":
+        break
+     elif numero == "197":
         print("Você será redirecionado para a Polícia Civil.")
         webbrowser.open("tel:197")
-    elif numero == "198":
+        break
+     elif numero == "198":
         print("Você será redirecionado para a Polícia Rodoviária.")
         webbrowser.open("tel:198")
-    elif numero == "199":
+        break
+     elif numero == "199":
         print("Você será redirecionado para a Defesa Civil.")
         webbrowser.open("tel:199")
-    elif numero == "180":
+        break
+     elif numero == "180":
         print("Você será redirecionado para a Central de Atendimento à Mulher.")
         webbrowser.open("tel:180")
-    elif numero == "181":
+        break
+     elif numero == "181":
         print("Você será redirecionado para o Disque Denúncia.")
         webbrowser.open("tel:181")
-    elif numero == "100":
+        break
+     elif numero == "100":
         print("Você será redirecionado para o Disque Direitos Humanos.")
         webbrowser.open("tel:100")
-    elif numero == "188":
+        break
+     elif numero == "188":
         print("Você será redirecionado para o CVV (Centro de Valorização da Vida).")
         webbrowser.open("tel:188")
-    else:
-        print("Número de emergência inválido.")
+     else:
+        print("Número de emergência inválido. Tente novamente.")
     print()  
 
 def menu_prevencao():
