@@ -8,18 +8,18 @@ Este projeto foi desenvolvido como parte de um exercício acadêmico no primeiro
 
 ## *Funcionalidades Principais*
 
-*Cadastro de Usuário : O sistema permite o cadastro de novos usuários com verificação de segurança e criptografia de senha utilizando o bcrypt.
+**Cadastro de Usuário** : O sistema permite o cadastro de novos usuários com verificação de segurança e criptografia de senha utilizando o bcrypt.
 
-*Login Seguro : A autenticação dos usuários é feita por meio de login com senha criptografada.
+**Login Seguro** : A autenticação dos usuários é feita por meio de login com senha criptografada.
 
-*Redefinição de senha : O sistema oferece uma funcionalidade para redefinir senhas com base em perguntas de segurança.
+**Redefinição de senha** : O sistema oferece uma funcionalidade para redefinir senhas com base em perguntas de segurança.
 
-*Registro de Boletins de Ocorrência : Os usuários registradores podem denunciar crimes como roubo e furto.
+**Registro de Boletins de Ocorrência** : Os usuários registradores podem denunciar crimes como roubo e furto.
 
-*Consulte Informações de Segurança : Exiba informações sobre bairros perigosos, horários críticos de criminalidade e dicas de segurança pessoais.
+**Consulte Informações de Segurança** : Exiba informações sobre bairros perigosos, horários críticos de criminalidade e dicas de segurança pessoais.
 
-*Menu de Prevenção : Inclui números de emergência, contato rápido com serviços de segurança e informações fornecidas sobre como evitar crimes.
+**Menu de Prevenção** : Inclui números de emergência, contato rápido com serviços de segurança e informações fornecidas sobre como evitar crimes.
 
-*Suporte Virtual : Assistente virtual integrado para perguntas e orientações aos usuários.
+**Suporte Virtual** : Assistente virtual integrado para perguntas e orientações aos usuários.
 
 
